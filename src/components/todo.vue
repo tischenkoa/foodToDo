@@ -1,12 +1,10 @@
 <template>
-<div class="">
-  <h5>other</h5>
-</div>
+<h5>todo</h5>
 </template>
 
 <script>
 export default {
-  name: 'other',
+  name: 'todo',
   data() {
     return {
       msg: 'Welcome to Your Vue.js App',
