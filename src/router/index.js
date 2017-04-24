@@ -7,7 +7,8 @@ import Todo from '@/components/todo';
 Vue.use(Router);
 
 export default new Router({
-  routes: [{
+  routes: [
+    {
       path: '/',
       name: 'food',
       component: Food,
