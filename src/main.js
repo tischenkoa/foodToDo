@@ -8,6 +8,12 @@ import router from './router';
 
 Vue.config.productionTip = false;
 Vue.use(VueMaterial);
+Vue.material.registerTheme('default', {
+  primary: 'deep-orange',
+  accent: 'red',
+  warn: 'red',
+  background: 'white',
+});
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
