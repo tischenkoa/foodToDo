@@ -1,5 +1,10 @@
 <template>
 <div id="app">
+	<div class="header-container">
+		<md-layout md-align="center">
+			<img src="./assets/img/logo.png" alt="" class="logo">
+		</md-layout>
+	</div>
 	<div class="main-container">
 		<router-view></router-view>
 	</div>
@@ -37,8 +42,14 @@ export default {
 	height: 100vh;
 	max-width: 800px;
 	margin: 0 auto;
+	& .header-container {
+		height: 100px;
+		& img.logo {
+			height: 80px
+		}
+	}
 	& .main-container {
-		height: calc(100vh - 56px);
+		height: calc(100vh - 56px - 100px);
 	}
 }
 </style>
