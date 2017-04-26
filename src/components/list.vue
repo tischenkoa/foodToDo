@@ -5,7 +5,7 @@
 
     <md-input-container style="flex: 1">
       <label>Add to list</label>
-      <md-input v-model="itemNew.name" />
+      <md-input v-model="itemNew.name" @keydown.enter.native="add"/>
     </md-input-container>
 
     <md-button class="md-icon-button" @click.native="add">
@@ -22,7 +22,6 @@
         <md-table-head md-numeric>Protein (g)</md-table-head>
       </md-table-row>
     </md-table-header>
-    {{list}}
     <md-table-body>
       <md-table-row v-for="(item, index) in listDB" :key="index">
         <md-table-cell>{{item.name}}</md-table-cell>
@@ -34,27 +33,23 @@
 </template>
 
 <script>
-import Firebase from 'firebase';
+import Vue from 'vue';
+import fbService from '../service/firebase';
 
-const config = {
-  apiKey: 'AIzaSyBRkJNYviFmRRBHSpHX5Q7ffqk8xes4yNg',
-  authDomain: 'tiar-food.firebaseapp.com',
-  databaseURL: 'https://tiar-food.firebaseio.com',
-  projectId: 'tiar-food',
-  storageBucket: 'tiar-food.appspot.com',
-  messagingSenderId: '392737220794',
-};
-
-const app = Firebase.initializeApp(config);
-const db = app.database();
+const refDB = fbService.getDB().ref('lists/');
 
 export default {
   name: 'list',
   props: ['list'],
   firebase() {
     return {
-      listDB: db.ref('/lists/food'),
+      listDB: refDB.child(this.list),
     };
+  },
+  watch: {
+    list() {
+      this.$bindAsArray('listDB', refDB.child(this.list));
+    },
   },
   data() {
     return {
@@ -65,10 +60,9 @@ export default {
   },
   methods: {
     add() {
-      this.listDB.push({
-        name: this.itemNew.name,
-      });
-      this.itemNew.name = '';
+      console.log(this.list);
+      this.$firebaseRefs.listDB.push(Vue.util.exten({}, this.itemNew));
+      this.itemNew = {};
     },
     remove() {},
     bay() {},
