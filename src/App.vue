@@ -38,18 +38,28 @@ export default {
 @import './assets/style/index.css';
 @import '~vue-material/dist/vue-material.css';
 
+:root {
+	--headerHeight: 80px;
+	--bottomBarHeight: 56px;
+}
+
 #app {
 	height: 100vh;
+	overflow: hidden;
 	max-width: 800px;
+	width: 100vw;
 	margin: 0 auto;
 	& .header-container {
-		height: 100px;
+		height: var(--headerHeight);
+		margin-bottom: 5px;
 		& img.logo {
-			height: 80px
+			height: var(--headerHeight);
 		}
 	}
 	& .main-container {
-		height: calc(100vh - 56px - 100px);
+		height: calc(100vh - var(--bottomBarHeight) - var(--headerHeight));
+		width: 100%;
+		overflow: hidden;
 	}
 }
 </style>

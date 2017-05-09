@@ -12,32 +12,30 @@
       <md-icon>add</md-icon>
     </md-button>
   </md-toolbar>
-  <md-table class="list-table">
-    <md-table-header>
-      <md-table-row>
-        <md-table-head class="md-table-selection">Done</md-table-head>
-        <md-table-head>Name</md-table-head>
-        <md-table-head>Descriptions</md-table-head>
-        <md-table-head md-numeric>Quantity</md-table-head>
-        <md-table-head md-numeric></md-table-head>
-      </md-table-row>
-    </md-table-header>
-    <md-table-body>
-      <md-table-row v-for="(item, index) in listDB" :key="index">
-        <md-table-cell class="md-table-selection">
+  <div class="list-table">
+    <div class="list-table-header">
+      <div class="list-table-done">Done</div>
+      <div class="list-table-name">Name</div>
+      <div class="list-table-descriptions">Descriptions</div>
+      <div class="list-table-quantity">qty.</div>
+      <div class="list-table-remove"></div>
+    </div>
+    <div  class="list-table-body">
+      <div v-for="(item, index) in listDB" :key="index" class="list-table-row">
+        <div class="list-table-done">
           <md-checkbox v-model="item.done" class="item-done" />
-        </md-table-cell>
-        <md-table-cell>{{item.name}}</md-table-cell>
-        <md-table-cell>{{item.descriptions}}</md-table-cell>
-        <md-table-cell md-numeric>{{item.quantity}} {{item.unit}}</md-table-cell>
-        <td class="item-remove">
+        </div>
+        <div class="list-table-name">{{item.name}}</div>
+        <div class="list-table-descriptions">{{item.descriptions}}</div>
+        <div class="list-table-quantity">{{item.quantity}} {{item.unit}}</div>
+        <div class="list-table-remove">
           <md-button class="md-icon-button md-warn" @click.native="showConfirmRemove(item)">
             <md-icon>delete</md-icon>
           </md-button>
-        </td>
-      </md-table-row>
-    </md-table-body>
-  </md-table>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <md-dialog md-open-from=".ftd-toolbar-main button" md-close-to=".ftd-toolbar-main button" ref="addToList">
     <md-dialog-title>
@@ -169,20 +167,70 @@ export default {
 </script>
 
 <style scoped>
+:root {
+  --toolbarHeight: 64px;
+  --tableHeight: 50px;
+}
 .list {
+  height: 100%;
+  overflow: hidden;
+  & .md-toolbar {
+    height: var(--toolbarHeight);
+  }
   & .list-table {
-    & .item-done {
-      width: 40px;
-      margin: 0;
+    height: calc(100% - var(--toolbarHeight));
+    & .list-table-header,
+    & .list-table-body .list-table-row {
+      display: flex;
+      align-items: center;
+      padding: 4px 0;
     }
-    & tr:hover {
-      & td{
-        background-color: #eee;
+    & .list-table-header {
+      padding-top: 15px;
+      height: var(--tableHeight);
+    }
+    & .list-table-body {
+      overflow-x: hidden;
+      overflow-y: auto;
+      height: calc(100% - var(--tableHeight));
+    }
+    & .list-table-done {
+      width: 48px;
+      margin: 0;
+      text-align: center;
+      & .md-checkbox {
+        margin: 0;
       }
     }
-    & .item-remove {
+    & .list-table-name {
+      flex: 0.4;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 0 5px;
+    }
+    & .list-table-descriptions {
+      flex: 0.6;
+      padding: 0 5px;
+    }
+    & .list-table-quantity {
+      text-align: right;
       width: 40px;
+    }
+    & .list-table-remove {
+      width: 52px;
       transition: all .4s cubic-bezier(.25,.8,.25,1);
+    }
+    & .list-table-row:hover {
+      cursor: pointer;
+      background-color: #eee;
+    }
+    @media (width <= 500px){
+      & .list-table-name {
+        flex: 1;
+      }
+      & .list-table-descriptions {
+        display: none;
+      }
     }
   }
 }

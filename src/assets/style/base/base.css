@@ -1,3 +1,7 @@
 td, th {
 	vertical-align: middle;
 }
+
+.md-ink-ripple {
+	display: none;
+}
