@@ -2,6 +2,13 @@ td, th {
 	vertical-align: middle;
 }
 
-.md-ink-ripple {
-	display: none;
+.md-dialog-content {
+	overflow-x: hidden;
 }
+
+.md-button.button-back {
+	position: absolute;
+	top: 25px;
+}
+
+[v-cloak] {display: none}

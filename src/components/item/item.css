@@ -1,0 +1,23 @@
+.item {
+	& form {
+		padding: 0 10px;
+		& .item-name {
+			flex: 1;
+			margin-right: 20px;
+		}
+		& .item-quantity {
+			width: 60px;
+			margin-right: 20px;
+		}
+		& .item-unit {
+			width: 80px;
+			& .md-select {
+				min-width: 80px;
+			}
+		}
+	}
+  & .footer-control {
+		justify-content: space-between;
+    & .button-update {}
+  }
+}
