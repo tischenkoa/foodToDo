@@ -8,7 +8,7 @@
 
     <md-input-container style="flex: 1">
       <label>Add to list</label>
-      <md-input v-model="itemNew.name" @keydown.enter.native="showDialogAdd('addToList')" />
+      <md-input v-model="itemNew.name" @keydown.enter.native="showDialogAdd('addToList')" @keydown.native="autoComplete($event)"/>
     </md-input-container>
     <md-checkbox class="fast-add" id="fast-add" name="fast-add" v-model="fastAdd">fast</md-checkbox>
     <md-button class="md-icon-button" @click.native="showDialogAdd('addToList')">

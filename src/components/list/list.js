@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import fbService from '@/service/firebase';
+import Api from '@/service/api';
 
 const refDB = fbService.getDB().ref('lists/');
 
@@ -84,5 +85,8 @@ export default {
       this.$firebaseRefs.items.child(item['.key']).remove();
     },
     bay() {},
+    autoComplete(event) {
+      Api.autoComplete(this.itemNew.name);
+    },
   },
 };

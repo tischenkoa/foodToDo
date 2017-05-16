@@ -47,5 +47,6 @@ module.exports = {
         argsIgnorePattern: '^_$',
       },
     ],
+    "arrow-parens": 0,
   },
 };
