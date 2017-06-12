@@ -1,6 +1,5 @@
 import _ from 'lodash';
 import fbService from '@/service/firebase';
-import Api from '@/service/api';
 
 const refDB = fbService.getDB().ref('lists/');
 
@@ -53,6 +52,7 @@ export default {
         okText: 'remove',
         obj: {},
       },
+      autocomplete: [],
     };
   },
   methods: {
@@ -68,25 +68,24 @@ export default {
       this.$refs[ref].close();
     },
     showConfirmRemove(item) {
-      this.confirm.content = item.name;
+      this.confirm.content = item ? item.name : 'All item';
       this.confirm.obj = item;
       this.$refs.removeItem.open();
     },
     closeConfirm(type) {
-      if (type === 'ok') this.$firebaseRefs.listDB.child(this.confirm.obj['.key']).remove();
-      this.confirm.obj = {};
+      if (type === 'ok') {
+        if (this.confirm.obj) {
+          this.$firebaseRefs.listDB.child(this.confirm.obj['.key']).remove();
+        } else {
+          this.$firebaseRefs.listDB.remove();
+        }
+        this.confirm.obj = {};
+      }
     },
     add(ref) {
       this.$refs[ref].close();
       this.$firebaseRefs.listDB.push(_.extend({}, this.itemNew));
       this.itemNew = _.extend({}, itemDefult[this.list]);
-    },
-    remove(item) {
-      this.$firebaseRefs.items.child(item['.key']).remove();
-    },
-    bay() {},
-    autoComplete(event) {
-      Api.autoComplete(this.itemNew.name);
     },
   },
 };

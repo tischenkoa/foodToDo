@@ -58,6 +58,9 @@
       cursor: pointer;
       background-color: #eee;
     }
+    & .list-table-more {
+      width: 52px;
+    }
     @media (width <= 500px){
       & .list-table-name {
         flex: 1;

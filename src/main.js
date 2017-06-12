@@ -4,6 +4,7 @@ import VueMaterial from 'vue-material';
 
 import App from './App';
 import router from './router';
+import Autocomplete from './components/autocomplete';
 
 Vue.config.productionTip = false;
 
@@ -16,6 +17,8 @@ Vue.material.registerTheme('default', {
   warn: 'red',
   background: 'white',
 });
+
+Vue.component('autocomplete', Autocomplete);
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

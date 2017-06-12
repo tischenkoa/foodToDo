@@ -5,11 +5,7 @@
 <div class="list">
   <md-toolbar class='ftd-toolbar-main'>
     <h2 class="md-title"><md-icon>edit</md-icon></h2>
-
-    <md-input-container style="flex: 1">
-      <label>Add to list</label>
-      <md-input v-model="itemNew.name" @keydown.enter.native="showDialogAdd('addToList')" @keydown.native="autoComplete($event)"/>
-    </md-input-container>
+    <autocomplete :model.sync="itemNew.name" :onKeydownEnter="showDialogAdd"></autocomplete>
     <md-checkbox class="fast-add" id="fast-add" name="fast-add" v-model="fastAdd">fast</md-checkbox>
     <md-button class="md-icon-button" @click.native="showDialogAdd('addToList')">
       <md-icon>add</md-icon>
@@ -22,13 +18,13 @@
       <div class="list-table-descriptions">Descriptions</div>
       <div class="list-table-quantity">qty.</div>
       <div class="list-table-more">
-        <md-menu md-align-trigger>
+        <md-menu md-align-trigger v-if="listDB.length">
           <md-button class="md-icon-button" md-menu-trigger>
             <md-icon>more_vert</md-icon>
           </md-button>
           <md-menu-content>
             <md-menu-item>Done all</md-menu-item>
-            <md-menu-item>Remove all</md-menu-item>
+            <md-menu-item @click.stop.native="showConfirmRemove()">Remove all</md-menu-item>
             <md-menu-item>Send list</md-menu-item>
           </md-menu-content>
         </md-menu>
