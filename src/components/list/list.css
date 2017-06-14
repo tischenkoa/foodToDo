@@ -2,6 +2,7 @@
   --toolbarHeight: 64px;
   --tableHeight: 50px;
 }
+
 .list {
   height: 100%;
   overflow: hidden;
@@ -52,7 +53,7 @@
     }
     & .list-table-remove {
       width: 52px;
-      transition: all .4s cubic-bezier(.25,.8,.25,1);
+      transition: all .4s cubic-bezier(.25, .8, .25, 1);
     }
     & .list-table-row:hover {
       cursor: pointer;
@@ -61,10 +62,11 @@
     & .list-table-more {
       width: 52px;
     }
-    @media (width <= 500px){
+    @media (width <= 500px) {
       & .list-table-name {
         flex: 1;
       }
+
       & .list-table-descriptions {
         display: none;
       }
