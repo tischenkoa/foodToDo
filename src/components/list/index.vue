@@ -34,7 +34,7 @@
       </div>
       <div class="list-table-body">
         <div v-for="(item, index) in listDB" :key="index" class="list-table-row"
-             @click="$router.push(`/${list}/${item['.key']}`)">
+             @click="$router.push(`/list/${list}/${item['.key']}`)">
           <div class="list-table-done">
             <md-checkbox v-model="item.done" class="item-done"/>
           </div>

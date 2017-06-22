@@ -57,6 +57,7 @@ export default {
   },
   methods: {
     showDialogAdd(ref) {
+      if (!this.itemNew.name) return false;
       if (this.fastAdd) {
         this.$firebaseRefs.listDB.push(_.extend({}, this.itemNew));
         this.itemNew = _.extend({}, itemDefult[this.list]);

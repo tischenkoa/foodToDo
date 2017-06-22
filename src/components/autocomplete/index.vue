@@ -51,6 +51,7 @@ export default {
           this.select(this.value);
           break;
         default:
+          this.$emit('update:model', this.value);
           this.currentSelectIndex = undefined;
           this.getAutoCompleteList();
       }
@@ -62,7 +63,6 @@ export default {
       this.value = '';
     },
     hide() {
-      console.log('dsf');
       this.autocompleteList = [];
       this.currentSelectIndex = undefined;
     },
