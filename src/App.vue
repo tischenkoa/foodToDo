@@ -19,6 +19,7 @@
     height: 100vh;
     overflow: hidden;
     max-width: 800px;
+    min-width: 320px;
     width: 100vw;
     margin: 0 auto;
   }

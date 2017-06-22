@@ -1,7 +1,7 @@
 {
-  "name": "vue_test",
+  "name": "foodToDo",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "",
   "author": "ArturTishchenko <arthur.tishenko@spacese.com>",
   "private": true,
   "scripts": {

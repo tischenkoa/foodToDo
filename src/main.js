@@ -5,6 +5,7 @@ import vClickOutside from 'v-click-outside';
 
 import App from './App';
 import router from './router';
+import sideMenu from './components/sideMenu';
 import Autocomplete from './components/autocomplete';
 import Back from './components/back';
 import firebase from './service/firebase';
@@ -22,6 +23,7 @@ Vue.material.registerTheme('default', {
   background: 'white',
 });
 
+Vue.component('sideMenu', sideMenu);
 Vue.component('autocomplete', Autocomplete);
 Vue.component('back', Back);
 
@@ -34,7 +36,11 @@ firebaseAuth.onAuthStateChanged(_user => {
 });
 
 router.beforeEach((to, from, next) => {
-  next();
+  if (to.meta.withoutAuth || user) {
+    next();
+  } else {
+    next('/auth');
+  }
 });
 
 /* eslint-disable no-new */

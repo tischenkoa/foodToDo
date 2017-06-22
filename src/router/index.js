@@ -11,8 +11,11 @@ Vue.use(Router);
 export default new Router({
   routes: [
     {
-      path: '/list',
-      name: 'main',
+      path: '*',
+      redirect: '/list/food',
+    },
+    {
+      path: '',
       component: Main,
       children: [
         {
@@ -30,18 +33,20 @@ export default new Router({
       ],
     },
     {
-      path: '*',
-      redirect: '/list/food',
-    },
-    {
       path: '/auth',
       name: 'auth',
       component: Auth,
+      meta: {
+        withoutAuth: true,
+      },
     },
     {
       path: '/registration',
       name: 'registration',
       component: Registration,
+      meta: {
+        withoutAuth: true,
+      },
     },
   ],
 });
