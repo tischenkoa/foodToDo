@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import fbService from '@/service/firebase';
+import fbService from 'service/firebase';
 
 const refDB = fbService.getDB().ref('lists/');
 

@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueFire from 'vuefire';
 import VueMaterial from 'vue-material';
+import vClickOutside from 'v-click-outside';
 
 import App from './App';
 import router from './router';
@@ -9,6 +10,7 @@ import Autocomplete from './components/autocomplete';
 Vue.config.productionTip = false;
 
 Vue.use(VueFire);
+Vue.use(vClickOutside);
 
 Vue.use(VueMaterial);
 Vue.material.registerTheme('default', {

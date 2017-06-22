@@ -1,14 +1,16 @@
 td, th {
-	vertical-align: middle;
+  vertical-align: middle;
 }
 
 .md-dialog-content {
-	overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 .md-button.button-back {
-	position: absolute;
-	top: 25px;
+  position: absolute;
+  top: 25px;
 }
 
-[v-cloak] {display: none}
+[v-cloak] {
+  display: none
+}

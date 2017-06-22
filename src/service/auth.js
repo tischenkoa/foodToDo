@@ -1,6 +1,6 @@
 // src/auth/index.js
 
-import { router } from '../router/index';
+import {router} from '../router/index';
 
 // URL and endpoint constants
 const API_URL = 'http://localhost:3001/';
@@ -15,36 +15,32 @@ export default {
 
   // Send a request to the login URL and save the returned JWT
   login(context, creds, redirect) {
-    context.$http
-      .post(LOGIN_URL, creds, (data) => {
-        localStorage.setItem('id_token', data.id_token);
+    context.$http.post(LOGIN_URL, creds, (data) => {
+      localStorage.setItem('id_token', data.id_token);
 
-        this.user.authenticated = true;
+      this.user.authenticated = true;
 
-        // Redirect to a specified route
-        if (redirect) {
-          router.go(redirect);
-        }
-      })
-      .error((err) => {
-        context.error = err;
-      });
+      // Redirect to a specified route
+      if (redirect) {
+        router.go(redirect);
+      }
+    }).error((err) => {
+      context.error = err;
+    });
   },
 
   signup(context, creds, redirect) {
-    context.$http
-      .post(SIGNUP_URL, creds, (data) => {
-        localStorage.setItem('id_token', data.id_token);
+    context.$http.post(SIGNUP_URL, creds, (data) => {
+      localStorage.setItem('id_token', data.id_token);
 
-        this.user.authenticated = true;
+      this.user.authenticated = true;
 
-        if (redirect) {
-          router.go(redirect);
-        }
-      })
-      .error((err) => {
-        context.error = err;
-      });
+      if (redirect) {
+        router.go(redirect);
+      }
+    }).error((err) => {
+      context.error = err;
+    });
   },
 
   // To log out, we just need to remove the token
