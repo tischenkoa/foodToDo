@@ -6,6 +6,8 @@ import vClickOutside from 'v-click-outside';
 import App from './App';
 import router from './router';
 import Autocomplete from './components/autocomplete';
+import Back from './components/back';
+import firebase from './service/firebase';
 
 Vue.config.productionTip = false;
 
@@ -21,6 +23,20 @@ Vue.material.registerTheme('default', {
 });
 
 Vue.component('autocomplete', Autocomplete);
+Vue.component('back', Back);
+
+const firebaseAuth = firebase.getFirebaseAuth();
+let user;
+
+firebaseAuth.onAuthStateChanged(_user => {
+  user = _user;
+  console.log(_user);
+});
+
+router.beforeEach((to, from, next) => {
+  next();
+});
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

@@ -1,4 +1,4 @@
-.auth-container{
+.registration-container{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,15 +11,12 @@
     }
     & .auth-page-header {
       margin-top: 50px;
-      margin-bottom: 50px;
       & h3 {
         color: #8bc34a;
         text-align: center;
       }
     }
     & form {
-      border-top: 3px solid #e1e4e8;
-      padding-top: 25px;
       margin: 20px auto;
       max-width: 450px;
     }

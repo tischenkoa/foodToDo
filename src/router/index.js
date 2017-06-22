@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import List from 'components/list';
 import Item from 'components/item';
 import Auth from 'components/auth';
+import Registration from 'components/registration';
 import Main from 'components/main';
 
 Vue.use(Router);
@@ -36,6 +37,11 @@ export default new Router({
       path: '/auth',
       name: 'auth',
       component: Auth,
+    },
+    {
+      path: '/registration',
+      name: 'registration',
+      component: Registration,
     },
   ],
 });

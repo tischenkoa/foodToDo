@@ -3,9 +3,7 @@
 
 <template>
   <div class="item">
-    <md-button class="md-icon-button md-raised button-back" @click.native="$router.push(`/${list}`)">
-      <md-icon>arrow_back</md-icon>
-    </md-button>
+    <back></back>
     <form>
       <md-layout class="field-group">
         <md-input-container class="item-name">

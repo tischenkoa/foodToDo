@@ -11,9 +11,13 @@ const config = {
 
 const app = Firebase.initializeApp(config);
 const db = app.database();
+const auth = app.auth();
 
 export default {
   getDB() {
     return db;
+  },
+  getFirebaseAuth() {
+    return auth;
   },
 };

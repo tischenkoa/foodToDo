@@ -6,11 +6,6 @@ td, th {
   overflow-x: hidden;
 }
 
-.md-button.button-back {
-  position: absolute;
-  top: 25px;
-}
-
 [v-cloak] {
   display: none
 }
