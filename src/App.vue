@@ -1,19 +1,33 @@
 <template>
   <div id="app">
-      <router-view></router-view>
+    <router-view></router-view>
+    <transition name="fade">
+      <div class="preloader-app" v-show="showPreloader">
+        <md-spinner :md-size="150" :md-stroke="1" md-indeterminate></md-spinner>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script>
   export default {
     name: 'app',
+    data() {
+      return {
+        showPreloader: true,
+      };
+    },
+    mounted() {
+      this.$root.$on('preloader', (type) => {
+        this.showPreloader = type;
+      });
+    },
   };
 </script>
 
 <style>
   @import './assets/style/index.css';
   @import '~vue-material/dist/vue-material.css';
-
 
   #app {
     height: 100vh;
@@ -22,5 +36,17 @@
     min-width: 320px;
     width: 100vw;
     margin: 0 auto;
+  }
+
+  .preloader-app {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 </style>

@@ -7,7 +7,6 @@ export default {
   methods: {
     signOut() {
       firebaseAuth.signOut().then(function() {
-        // Sign-out successful.
       }).catch(function(error) {
         // An error happened.
       });

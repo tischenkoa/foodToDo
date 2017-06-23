@@ -28,6 +28,18 @@ export default {
       currentSelectIndex: undefined,
     };
   },
+  watch: {
+    value: function cb() {
+      this.$emit('update:model', this.value);
+      this.currentSelectIndex = undefined;
+
+      Api.autoComplete(this.value, configAutocompleteSource[this.list]).then(result => {
+        this.autocompleteList = result.slice(0, 9);
+      }, () => {
+        this.autocompleteList = [];
+      });
+    },
+  },
   methods: {
     autoComplete(event) {
       switch (event.keyCode) {
@@ -51,9 +63,6 @@ export default {
           this.select(this.value);
           break;
         default:
-          this.$emit('update:model', this.value);
-          this.currentSelectIndex = undefined;
-          this.getAutoCompleteList();
       }
     },
     select(value) {
@@ -66,13 +75,6 @@ export default {
       this.autocompleteList = [];
       this.currentSelectIndex = undefined;
     },
-    getAutoCompleteList: _.throttle(function throttle() {
-      Api.autoComplete(this.value, configAutocompleteSource[this.list]).then(result => {
-        this.autocompleteList = result.slice(0, 9);
-      }, () => {
-        this.autocompleteList = [];
-      });
-    }, 500),
   },
 };
 </script>

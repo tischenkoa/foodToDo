@@ -28,31 +28,35 @@ Vue.component('autocomplete', Autocomplete);
 Vue.component('back', Back);
 
 const firebaseAuth = firebase.getFirebaseAuth();
-let user;
-
-firebaseAuth.onAuthStateChanged(_user => {
-  user = _user;
-  if (user) {
-    router.push('/list/food');
-  } else {
-    router.push('auth');
-  }
-});
-
-router.beforeEach((to, from, next) => {
-  if (to.meta.withoutAuth || user) {
-    next();
-  } else {
-    next('/auth');
-  }
-});
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  data: {
+    user: null,
+  },
   router,
   template: '<App/>',
   components: {
     App,
+  },
+  mounted() {
+    firebaseAuth.onAuthStateChanged(_user => {
+      this.user = _user;
+      if (this.user) {
+        router.push('/list/food');
+      } else {
+        router.push('auth');
+      }
+      this.$root.$emit('preloader', false);
+    });
+
+    router.beforeEach((to, from, next) => {
+      if (to.meta.withoutAuth || this.user) {
+        next();
+      } else {
+        next('/auth');
+      }
+    });
   },
 });
