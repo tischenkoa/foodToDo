@@ -1,3 +1,7 @@
 .side-menu {
-
+  & .side-menu-toggle {
+   position: absolute;
+    top: 25px;
+    left: 25px;
+  }
 }

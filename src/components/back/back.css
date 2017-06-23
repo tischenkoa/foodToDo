@@ -2,4 +2,8 @@
   position: absolute;
   top: 25px;
   left: 25px;
+  background: #fff;
+  &:hover {
+    background: #fff;
+  }
 }

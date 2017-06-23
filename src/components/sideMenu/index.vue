@@ -3,9 +3,11 @@
 
 <template>
   <div class="phone-viewport side-menu">
-    <md-button class="md-icon-button" @click.native="toggleLeftSidenav">
-      <md-icon>menu</md-icon>
-    </md-button>
+    <div class="side-menu-toggle">
+      <md-button class="md-icon-button" @click.native="toggleLeftSidenav">
+        <md-icon>menu</md-icon>
+      </md-button>
+    </div>
 
     <md-sidenav class="md-left" ref="leftSidenav" @open="open('Left')" @close="close('Left')">
       <md-toolbar class="md-large">
@@ -14,18 +16,12 @@
         </div>
       </md-toolbar>
 
-
       <md-list>
-        <md-list-item>
-          <md-icon>whatshot</md-icon>
-          <span>News</span>
+        <md-list-item @click.native="signOut">
+          <md-icon>exit_to_app</md-icon>
+          <span>Sign Out</span>
         </md-list-item>
       </md-list>
-
-
-
-
-
     </md-sidenav>
   </div>
 </template>

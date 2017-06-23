@@ -77,4 +77,4 @@ export default {
 };
 </script>
 
-<style src="./autocomplete.css"></style>
+<style src="./autocomplete.css" scoped></style>

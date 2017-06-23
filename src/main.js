@@ -32,7 +32,11 @@ let user;
 
 firebaseAuth.onAuthStateChanged(_user => {
   user = _user;
-  console.log(_user);
+  if (user) {
+    router.push('/list/food');
+  } else {
+    router.push('auth');
+  }
 });
 
 router.beforeEach((to, from, next) => {

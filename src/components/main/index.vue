@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <!--<side-menu></side-menu>-->
+    <side-menu></side-menu>
     <div class="header-container">
       <md-layout md-align="center">
         <img src="~assets/img/logo.png" alt="" class="logo">
