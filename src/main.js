@@ -1,6 +1,8 @@
 import Vue from 'vue';
+
 import VueFire from 'vuefire';
 import VueMaterial from 'vue-material';
+import VeeValidate from 'vee-validate';
 import vClickOutside from 'v-click-outside';
 
 import App from './App';
@@ -13,9 +15,10 @@ import firebase from './service/firebase';
 Vue.config.productionTip = false;
 
 Vue.use(VueFire);
+Vue.use(VueMaterial);
+Vue.use(VeeValidate);
 Vue.use(vClickOutside);
 
-Vue.use(VueMaterial);
 Vue.material.registerTheme('default', {
   primary: 'light-green',
   accent: 'green',

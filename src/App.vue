@@ -6,6 +6,10 @@
         <md-spinner :md-size="150" :md-stroke="1" md-indeterminate></md-spinner>
       </div>
     </transition>
+    <md-snackbar ref="snackbar" md-duration="5000" md-position="top right">
+      <span>{{notificationMessage}}</span>
+      <md-button class="md-accent" @click="$refs.snackbar.close()">Close</md-button>
+    </md-snackbar>
   </div>
 </template>
 
@@ -15,11 +19,16 @@
     data() {
       return {
         showPreloader: true,
+        notificationMessage: '',
       };
     },
     mounted() {
       this.$root.$on('preloader', (type) => {
         this.showPreloader = type;
+      });
+      this.$root.$on('notification', (text) => {
+        this.notificationMessage = text;
+        this.$refs.snackbar.open();
       });
     },
   };
@@ -27,7 +36,6 @@
 
 <style>
   @import './assets/style/index.css';
-  @import '~vue-material/dist/vue-material.css';
 
   #app {
     height: 100vh;
