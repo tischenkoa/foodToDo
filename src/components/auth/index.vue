@@ -20,7 +20,7 @@
         </md-input-container>
         <md-input-container>
           <label>Password</label>
-          <md-input type="password" v-model="condition.password"></md-input>
+          <md-input type="password" v-model="condition.password" @keyup.native.enter="signIn"></md-input>
         </md-input-container>
         <md-layout md-align="center">
           <md-button class="md-raised" @click.native="$router.push('registration')">Registration</md-button>

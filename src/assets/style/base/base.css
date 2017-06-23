@@ -9,3 +9,14 @@ td, th {
 [v-cloak] {
   display: none
 }
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity ease-out 0.3s;
+  opacity: 1;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}

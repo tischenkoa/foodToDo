@@ -4,18 +4,6 @@
   margin-bottom: 24px;
   padding-top: 16px;
 }
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity ease-out 0.3s;
-  opacity: 1;
-}
-
-.fade-enter,
-.fade-leave-active {
-  opacity: 0;
-}
-
 .autocomplete {
   position: absolute;
   top: calc(100% + 2px);
