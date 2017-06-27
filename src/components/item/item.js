@@ -11,7 +11,7 @@ export default {
     };
   },
   created() {
-    this.$bindAsObject('item', refDB.child(this.list).child(this.itemId));
+    this.$bindAsObject('item', refDB.child(fbService.getCurrentUser().uid).child(this.list).child(this.itemId));
   },
   methods: {
     remove() {

@@ -25,4 +25,7 @@ export default {
     auth.signInWithRedirect(provider);
     return auth.getRedirectResult();
   },
+  getCurrentUser() {
+    return auth.currentUser;
+  },
 };

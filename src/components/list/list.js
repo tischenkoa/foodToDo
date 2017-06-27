@@ -2,7 +2,6 @@ import _ from 'lodash';
 import fbService from 'service/firebase';
 
 const refDB = fbService.getDB().ref('lists/');
-
 const itemDefult = {
   food: {
     name: '',
@@ -29,17 +28,16 @@ const itemDefult = {
   },
 };
 
+let user;
+
 export default {
   name: 'list',
   props: ['list'],
-  firebase() {
-    return {
-      listDB: refDB.child(this.list),
-    };
-  },
   watch: {
     list() {
-      this.$bindAsArray('listDB', refDB.child(this.list));
+      if (user) {
+        this.$bindAsArray('listDB', refDB.child(user.uid).child(this.list));
+      }
     },
   },
   data() {
@@ -53,6 +51,7 @@ export default {
         obj: {},
       },
       autocomplete: [],
+      listDB: {},
     };
   },
   methods: {
@@ -88,5 +87,13 @@ export default {
       this.$firebaseRefs.listDB.push(_.extend({}, this.itemNew));
       this.itemNew = _.extend({}, itemDefult[this.list]);
     },
+  },
+  mounted() {
+    fbService.getFirebaseAuth().onAuthStateChanged(_user => {
+      user = _user;
+      if (user) {
+        this.$bindAsArray('listDB', refDB.child(user.uid).child(this.list));
+      }
+    });
   },
 };
