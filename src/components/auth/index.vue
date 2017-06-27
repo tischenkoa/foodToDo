@@ -11,7 +11,8 @@
         <h3 class="md-display-1 green">Authorization</h3>
       </div>
       <md-layout md-align="center">
-        <md-button class="md-raised md-google">
+        <md-button class="md-raised md-google"
+                   @click.native="signInGoogle">
           <md-icon></md-icon>
           Sign in with Google
         </md-button>

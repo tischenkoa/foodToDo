@@ -14,14 +14,17 @@
       <form novalidate @submit.stop.prevent="submit">
         <md-input-container>
           <label>Email</label>
-          <md-input></md-input>
+          <md-input type="email"
+                    v-model="condition.email"></md-input>
         </md-input-container>
         <md-input-container>
           <label>Password</label>
-          <md-input type="password"></md-input>
+          <md-input type="password"
+                    v-model="condition.password"
+                    @keyup.native.enter="signIn"></md-input>
         </md-input-container>
         <md-layout md-align="center">
-          <md-button class="md-raised md-primary">Registration</md-button>
+          <md-button class="md-raised md-primary" @click.native="signUp">Registration</md-button>
         </md-layout>
       </form>
     </div>

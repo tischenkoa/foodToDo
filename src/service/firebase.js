@@ -20,4 +20,9 @@ export default {
   getFirebaseAuth() {
     return auth;
   },
+  getGoogleAuth() {
+    const provider = new Firebase.auth.GoogleAuthProvider();
+    auth.signInWithRedirect(provider);
+    return auth.getRedirectResult();
+  },
 };
